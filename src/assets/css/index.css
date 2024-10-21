@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-green: #4caf50;
+  --primary-dark-green: #388e3c;
+  --common-white: #ffffff;
+  --common-black: #000000;
+  --primary-gradient: linear-gradient(135deg, #f9f9f9 0%, #e0f7fa 100%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  scrollbar-width: thin;
+}
+
+body {
+  background: var(--primary-gradient);
+  color: var(--common-black);
+}
