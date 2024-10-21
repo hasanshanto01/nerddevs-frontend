@@ -1,12 +1,36 @@
+import { ChangeEvent, FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 
+interface LoginData {
+  email: string;
+  password: string;
+}
+
 function Login() {
+  const [formData, setFormData] = useState<LoginData>({
+    email: "",
+    password: "",
+  });
+
+  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+    console.log("on change:", e.target.name, e.target.value);
+    const name = e.target.name;
+    const value = e.target.value;
+
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("formData:", formData);
+  };
+
   return (
     <div className="min-h-screen px-5 md:px-10 py-5 flex justify-center items-center">
       <div className="w-full md:w-3/5 lg:w-[35%] p-5 bg-common-white rounded-md space-y-5 shadow-lg">
         <h2 className="text-center text-2xl font-semibold">Login</h2>
 
-        <form className="flex flex-col gap-2">
+        <form className="flex flex-col gap-2" onSubmit={handleFormSubmit}>
           {/* email */}
           <div className="flex flex-col gap-1">
             <label htmlFor="name" className="labelName">
@@ -19,6 +43,8 @@ function Login() {
               placeholder="Enter your email"
               required
               className="inputField"
+              value={formData?.email}
+              onChange={handleOnChange}
             />
           </div>
           {/* email */}
@@ -35,6 +61,8 @@ function Login() {
               placeholder="Enter your password"
               required
               className="inputField"
+              value={formData?.password}
+              onChange={handleOnChange}
             />
           </div>
           {/* password */}
