@@ -5,6 +5,7 @@
 :root {
   --primary-green: #4caf50;
   --primary-dark-green: #388e3c;
+  --primary-red: "#FF1A30";
   --common-white: #ffffff;
   --common-black: #000000;
   --primary-gradient: linear-gradient(135deg, #f9f9f9 0%, #e0f7fa 100%);
@@ -22,3 +23,38 @@ body {
   background: var(--primary-gradient);
   color: var(--common-black);
 }
+
+/* button style */
+.primaryBtn {
+  background: var(--primary-green);
+  color: var(--common-black);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.primaryBtn:hover {
+  background: var(--primary-dark-green);
+}
+/* button style */
+
+/* form label & input style */
+.labelName {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.inputField {
+  width: 100%;
+  border: 1px solid var(--common-black);
+  border-radius: 6px;
+  padding: 8px 12px;
+  outline: none;
+  font-size: 14px;
+}
+
+.inputField:focus {
+  border: 1px solid var(--primary-green);
+}
+/* form label & input style */
