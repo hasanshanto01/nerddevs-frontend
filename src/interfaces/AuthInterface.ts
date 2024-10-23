@@ -6,11 +6,12 @@ export interface RegistrationData {
   password: string;
 }
 
-export interface RegistrationResponse {
-  message: string;
+export interface LoginData {
+  email: string;
+  password: string;
 }
 
-export interface ApiResponse {
+export interface ApiErroresponse {
   title: string;
   message: string;
 }

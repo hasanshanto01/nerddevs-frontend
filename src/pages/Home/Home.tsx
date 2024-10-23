@@ -1,4 +1,14 @@
+import { useNavigate } from "react-router-dom";
+import { removeToken } from "../../helper/sessionHelper";
+
 function Home() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    removeToken();
+    navigate("/login");
+  };
+
   return (
     <div className="min-h-screen px-5 md:px-10 py-5">
       <div className="space-y-5">
@@ -11,7 +21,9 @@ function Home() {
           consectetur illum sapiente deserunt consequatur ut culpa, vero dicta
           aperiam. Eligendi delectus ab quis deleniti culpa eius modi non.
         </p>
-        <button className="primaryBtn">Logout</button>
+        <button className="primaryBtn" onClick={handleLogout}>
+          Logout
+        </button>
       </div>
     </div>
   );

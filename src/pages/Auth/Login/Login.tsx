@@ -1,16 +1,19 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { Link } from "react-router-dom";
-
-interface LoginData {
-  email: string;
-  password: string;
-}
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { LoginData } from "../../../interfaces/AuthInterface";
+import { loginRequest } from "../../../apiRequests/AuthApiRequests";
 
 function Login() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   const [formData, setFormData] = useState<LoginData>({
     email: "",
     password: "",
   });
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     console.log("on change:", e.target.name, e.target.value);
@@ -20,9 +23,21 @@ function Login() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("formData:", formData);
+    setIsLoading(true);
+
+    const submitRes = await loginRequest(formData);
+
+    if (submitRes) {
+      navigate(from, { replace: true });
+    }
+
+    setIsLoading(false);
+    setFormData({
+      email: "",
+      password: "",
+    });
   };
 
   return (
@@ -68,7 +83,9 @@ function Login() {
           {/* password */}
 
           <div>
-            <button className="primaryBtn w-full">Login</button>
+            <button disabled={isLoading} className="primaryBtn w-full">
+              {isLoading ? "Wait..." : "Login"}
+            </button>
           </div>
 
           <p className="text-center font-medium">
