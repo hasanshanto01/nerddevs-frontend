@@ -14,7 +14,7 @@
 Clone the project:
 
 ```bash
-https://github.com/hasanshanto01/nerddevs-frontend.git
+git clone https://github.com/hasanshanto01/nerddevs-frontend.git
 ```
 
 Go to the project directory
@@ -27,6 +27,12 @@ Install dependencies
 
 ```bash
 npm install
+```
+
+Create environment file
+
+```bash
+VITE_BASE_URL=your_base_url_here
 ```
 
 Run the project
