@@ -2,6 +2,12 @@
 
 ## Live-Site: (https://nerddevs-frontend.vercel.app/)
 
+## Technologies
+
+- React
+- Typescript
+- Tailwind CSS
+
 ## Features
 
 - User registration
