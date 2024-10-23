@@ -32,7 +32,7 @@ npm install
 Create environment file
 
 ```bash
-VITE_BASE_URL=your_base_url_here
+VITE_BASE_URL=your_backend_base_url_here
 ```
 
 Run the project
