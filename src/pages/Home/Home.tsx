@@ -11,6 +11,7 @@ function Home() {
           consectetur illum sapiente deserunt consequatur ut culpa, vero dicta
           aperiam. Eligendi delectus ab quis deleniti culpa eius modi non.
         </p>
+        <button className="primaryBtn">Logout</button>
       </div>
     </div>
   );

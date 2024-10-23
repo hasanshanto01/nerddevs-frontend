@@ -1,18 +1,14 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { Link } from "react-router-dom";
-
-interface RegistrationData {
-  first_name: string;
-  last_name: string;
-  email: string;
-  mobile: string;
-  password: string;
-}
+import { Link, useNavigate } from "react-router-dom";
+import { RegistrationData } from "../../../interfaces/AuthInterface";
+import { registrationRequest } from "../../../apiRequests/AuthApiRequests";
 
 function Registration() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState<RegistrationData>({
-    first_name: "",
-    last_name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     mobile: "",
     password: "",
@@ -23,8 +19,9 @@ function Registration() {
     password: "",
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log("on change:", e.target.name, e.target.value);
     const name = e.target.name;
     const value = e.target.value;
 
@@ -61,9 +58,24 @@ function Registration() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("formData:", formData);
+    setIsLoading(true);
+
+    const submitRes = await registrationRequest(formData);
+
+    if (submitRes) {
+      navigate("/login");
+    }
+
+    setIsLoading(false);
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      mobile: "",
+      password: "",
+    });
   };
 
   return (
@@ -79,12 +91,12 @@ function Registration() {
             </label>
             <input
               type="text"
-              id="first_name"
-              name="first_name"
+              id="firstName"
+              name="firstName"
               placeholder="Enter your first name"
               required
               className="inputField"
-              value={formData?.first_name}
+              value={formData?.firstName}
               onChange={handleOnChange}
             />
           </div>
@@ -97,12 +109,12 @@ function Registration() {
             </label>
             <input
               type="text"
-              id="last_name"
-              name="last_name"
+              id="lastName"
+              name="lastName"
               placeholder="Enter your last name"
               required
               className="inputField"
-              value={formData?.last_name}
+              value={formData?.lastName}
               onChange={handleOnChange}
             />
           </div>
@@ -173,7 +185,9 @@ function Registration() {
           {/* password */}
 
           <div>
-            <button className="primaryBtn w-full">Registration</button>
+            <button disabled={isLoading} className="primaryBtn w-full">
+              {isLoading ? "Wait..." : "Registration"}
+            </button>
           </div>
 
           <p className="text-center font-medium">

@@ -1,4 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+// import Swal from "sweetalert2/dist/sweetalert2.js";
+// import "sweetalert2/src/sweetalert2.scss";
+
 import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home/Home";
 import Registration from "./pages/Auth/Registration/Registration";
