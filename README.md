@@ -1,4 +1,4 @@
-# Resale-Shop
+# NerdDevs-Frontend
 
 ## Live-Site: (https://nerddevs-frontend.vercel.app/)
 
