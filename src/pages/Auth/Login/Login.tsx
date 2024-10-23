@@ -15,6 +15,7 @@ function Login() {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  // on change fucntion
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     console.log("on change:", e.target.name, e.target.value);
     const name = e.target.name;
@@ -23,6 +24,7 @@ function Login() {
     setFormData({ ...formData, [name]: value });
   };
 
+  // on submit fucntion
   const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);

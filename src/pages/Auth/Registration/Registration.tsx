@@ -21,6 +21,7 @@ function Registration() {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  // on change fucntion
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -58,6 +59,7 @@ function Registration() {
     setFormData({ ...formData, [name]: value });
   };
 
+  // on submit fucntion
   const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);

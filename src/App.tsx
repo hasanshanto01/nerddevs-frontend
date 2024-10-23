@@ -13,13 +13,16 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
+          {/* prtected routes */}
           <Route path="/" element={<MainLayout />}>
             <Route path="/" element={<Home />} />
           </Route>
+          {/* prtected routes */}
 
           {/* auth routes */}
           <Route path="/registration" element={<Registration />} />
           <Route path="/login" element={<Login />} />
+          {/* auth routes */}
         </Routes>
       </BrowserRouter>
     </>
